@@ -1,3 +1,5 @@
 node_modules
-public/bundle.js
+public/*.js
 yarn-error.log
+coverage
+build

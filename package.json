@@ -6,13 +6,23 @@
   "scripts": {
     "start:server": "NODE_PATH=./lib nodemon --exec babel-node lib/server.js",
     "start:client": "webpack -wd",
-    "test": "jest --watchAll"
+    "build:server": "babel lib -d build --copy-files",
+    "build:client": "webpack -p",
+    "test:watch": "jest --watchAll",
+    "test:check-coverage": "jest --coverage" 
   },
   "babel": {
     "presets": [
       "react",
-      "env",
-      "stage-2"
+      ["env", {
+        "targets": {
+          "node": "current"
+        }
+      }]
+    ],
+    "plugins": [
+      "transform-class-properties",
+      "transform-object-rest-spread"
     ]
   },
   "devDependencies": {
